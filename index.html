@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Pengumuman Hasil</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200 flex items-center justify-center h-screen">
+  <div class="text-center">
+    <h1 class="text-3xl font-bold mb-4">Nungguin ya</h1>
+    <div id="countdown" class="text-4xl font-bold mb-4"></div>
+  </div>
+<script>
+  const countdown = document.getElementById('countdown');
+
+// Set the date we're counting down to
+const countDownDate = new Date("Feb 20, 2024 15:37:25").getTime();
+
+// Update the countdown every 1 second
+const x = setInterval(function() {
+
+  // Get the current date and time
+  const now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  const distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes, and seconds
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="countdown"
+  countdown.innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the countdown is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    countdown.innerHTML = "Waktu pengumuman sudah berakhir!";
+  }
+}, 1000);
+</script>
+</body>
+</html>
